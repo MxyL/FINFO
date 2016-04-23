@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "cfenv": "1.0.x",
+    "cors": "^2.7.1",
     "csv-parse": "^1.0.4",
     "express": "4.13.x",
     "firebase": "^2.4.2"

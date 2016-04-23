@@ -10,6 +10,7 @@ var express = require('express');
 var Firebase = require("firebase");
 var fs = require('fs');
 var csv = require("csv-parse");
+var cors = require('cors');
 
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
@@ -20,6 +21,7 @@ var app = express();
 
 // serve the files out of ./public as our main files
 app.use(express.static(__dirname + '/public'));
+app.use(cors());
 
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
