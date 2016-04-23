@@ -39,7 +39,7 @@ app.get('/test', function (req, res) {
 
 function store(data) {
   var myDataRef = new Firebase('https://intense-fire-4574.firebaseio.com/');
-  myDataRef.set(data)
+  myDataRef.push(data)
 }
 
 function parse(data) {
@@ -48,8 +48,20 @@ function parse(data) {
     if (err) {
       return err; 
     }
-    csv(data, function(err, output) {
-      store(output);
+    csv(data, function(err, rows) {
+      for (var i = 1; i < rows.length; i++) {
+        var tokens = rows[i];
+        store({
+            species: tokens[0],
+            date: tokens[1],
+            latitude: tokens[2],
+            longitude: tokens[3],
+            operation_id: tokens[4],
+            vessel: tokens[5],
+            total_catch_number: tokens[6],
+            total_catch_weight_kg: tokens[7]
+          });
+        }
     })
   });
 }
