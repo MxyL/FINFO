@@ -7,6 +7,7 @@
 // This application uses express as its web server
 // for more info, see: http://expressjs.com
 var express = require('express');
+var Firebase = require("firebase");
 
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
@@ -27,3 +28,25 @@ app.listen(appEnv.port, '0.0.0.0', function() {
 	// print a message when the server starts listening
   console.log("server starting on " + appEnv.url);
 });
+
+app.get('/test', function (req, res) {
+  res.send('GET request to the homepage');
+  parse();
+});
+
+var fs = require('fs');
+
+function store(data) {
+  var myDataRef = new Firebase('https://finfo.firebaseio.com/');
+  myDataRef.set(data);
+}
+
+function parse(data) {
+ 
+  fs.readFile('./selection.csv', function (err, data) {
+  if (err) {
+    throw err; 
+  }
+  store(data);
+});
+}
