@@ -13,9 +13,12 @@ module.exports = {
         var dat = data[i];
         store("Operations", {
             operation_id: dat["operation_dim$operation_id"],
+            date: dat["date_dim$yyyymmdd"],
             vessel: dat["operation_dim$vessel"],
             performance_result: dat["operation_dim$performance_result"],
-            operation_name: dat["operation_dim$project_name"]
+            operation_name: dat["operation_dim$project_name"],
+            longitude: dat["longitude_dim$longitude_in_degrees"],
+            latitude: dat["latitude_dim$latitude_in_degrees"]
           });
         }
     });
