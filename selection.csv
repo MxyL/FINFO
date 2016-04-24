@@ -1,6 +1,0 @@
-"best_available_taxonomy_dim$common_name","date_dim$yyyymmdd","haul_latitude_dim$latitude_in_degrees","haul_longitude_dim$longitude_in_degrees","operation_dim$operation_id","operation_dim$vessel","total_catch_numbers","total_catch_wt_kg"
-"roughtail skate","20100821","44.68972222","-125.08055556","201003008003","Excalibur","2","3.2500"
-"Dover sole","20100821","44.68972222","-125.08055556","201003008003","Excalibur","1","1.2500"
-"deepsea sole","20100821","44.68972222","-125.08055556","201003008003","Excalibur","15","7.4000"
-"California slickhead","20100821","44.68972222","-125.08055556","201003008003","Excalibur","7","2.2000"
-"sablefish","20100821","44.68972222","-125.08055556","201003008003","Excalibur","10","14.2000"
