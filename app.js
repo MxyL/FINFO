@@ -40,7 +40,7 @@ app.get('/test', function (req, res) {
 });
 
 app.get('/upload', function(req, res) {
-  parsers.parseDenmark();
+  parsers.parseOperations();
   res.send('GET request to the homepage');
 });
 
