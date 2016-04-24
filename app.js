@@ -64,3 +64,24 @@ app.get("/catch", function(req, res) {
     res.send(rtnVal);
   })
 });
+
+app.get("/operation", function(req, res) {
+  var ref = firebase.child("Operations");
+  if (req.query.filter) {
+    if (req.query.filter.indexOf(">=") >= 0) {
+      ref = ref.orderByChild(req.query.filter.split(">=")[0]).startAt(req.query.filter.split(">=")[1]);
+    } else if (req.query.filter.indexOf("<=") >= 0) {
+      ref = ref.orderByChild(req.query.filter.split("<=")[0]).endAt(req.query.filter.split("<=")[1]);
+    } else if (req.query.filter.indexOf("=") >= 0) {
+      ref = ref.orderByChild(req.query.filter.split("=")[0]).equalTo(req.query.filter.split("=")[1]);
+    }
+  }
+
+  ref.once("value").then(function(snapShot) {
+    var val = snapShot.val();
+    var rtnVal = Object.keys(val).map(function(key) {
+      return val[key];
+    });
+    res.send(rtnVal);
+  })
+});
